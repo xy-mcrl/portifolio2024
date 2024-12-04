@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Pessoal</title>
+    <style>
+        /* Reset básico */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #1f1f1f;
+            color: #f5f5f5;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff5f6d, #ffc371);
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        section {
+            padding: 60px 20px;
+        }
+
+        #home {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('image/image.png') no-repeat center/cover;
+            color: rgb(255, 255, 255);
+            height: 50vh;
+            background-size: cover;
+            position: relative;
+        }
+
+        .presentation img {
+            border-radius: 50%;
+            width: 210px;  /* Largura ajustada */
+            height: 210px;  /* Altura igual à largura para manter o formato circular */
+            object-fit: cover;  /* Garantir que a imagem cubra o círculo sem distorções */
+            margin-bottom: 1px;  /* Ajuste o espaçamento inferior conforme necessário */
+            border: 3px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+
+        .presentation h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+        }
+
+        .presentation p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        #sobre, #projetos, #contato {
+            margin: 40px 0;
+            background: #2d2d2d;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        #sobre:hover, #projetos:hover, #contato:hover {
+            transform: translateY(-10px);
+            background: #383838;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffc371;
+            text-align: center;
+        }
+
+        .project-gallery {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .project-item {
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #3c3c3c;
+            color: white;
+        }
+
+        form input::placeholder, form textarea::placeholder {
+            color: #bbb;
+        }
+
+        form button {
+            padding: 15px;
+            background: linear-gradient(135deg, #ff5f6d, #ffc371);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        form button:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #1a1a1a;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: #ffc371;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ff5f6d;
+        }
+
+        footer p {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            #home {
+                height: auto;
+                padding: 50px 20px;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .presentation h1 {
+                font-size: 2rem;
+            }
+
+            .project-gallery {
+                flex-direction: column;
+            }
+
+            .project-item {
+                width: 100%;
+                max-width: 300px;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <!-- Adicionando o link de Logout -->
+                <li><a href="#" id="logout">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Página Inicial -->
+    <section id="home">
+        <div class="presentation">
+            <img src="image/image.JPG" alt="Foto do Aluno">
+            <h1>Maria Clara</h1>
+            <p>Tecnico em Desenvolvimento de Sistemas</p>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="sobre">
+        <h2>Sobre Mim</h2>
+        <p><strong>Experiência Profissional:</strong> Técnico em Desenvolvimento de Sistemas.</p>
+        <p><strong>Habilidades Técnicas:</strong> HTML, CSS, JavaScript,Node.js.</p>
+        <p><strong>Projetos Realizados:</strong> Desenvolvimento de sites e sistemas.</p>
+        <p><strong>Especialidades:</strong> Design responsivo, otimização de performance e acessibilidade.</p>
+    </section>
+
+    <!-- Seção Projetos -->
+    <section id="projetos">
+        <h2>Meus Projetos</h2>
+        <div class="project-gallery">
+            <div class="project-item">
+                <img src="image/projeto1 (2).png" alt="Projeto 1">
+                <h3>Projeto Sistema escolar</h3>
+                <p>Realização de um sistema de turma de uma escola. Tecnologias: HTML, CSS, JavaScript.</p>
+                <p><strong>Data de realização:</strong> outubro de 2024</p>
+                <a href="https://biography-link.com">Link para o código-fonte</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato">
+        <h2>Contato</h2>
+        <form id="contact-form">
+            <input type="text" name="name" id="name" placeholder="Nome completo" required>
+            <input type="email" name="email" id="email" placeholder="E-mail" required>
+            <input type="text" name="subject" id="subject" placeholder="Assunto" required>
+            <textarea name="message" id="message" placeholder="Mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Inicializa o EmailJS com o seu User ID
+        emailjs.init("service_4gsw78b");  // Substitua "YOUR_USER_ID" pelo seu ID do EmailJS
+    </script>
+
+    <footer>
+        <p>&copy; 2024 Maria Clara Alves - Todos os direitos reservados</p>
+        <p>Redes sociais: <a href="#">LinkedIn</a> | <a href="https://github.com/xy-mcrl">GitHub</a></p>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Inicializa o EmailJS com o seu User ID
+        emailjs.init("service_4gsw78b");  // Substitua "YOUR_USER_ID" pelo seu ID do EmailJS
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();  // Impede o envio do formulário de maneira tradicional
+
+                // Coleta os dados do formulário
+                const nome = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const assunto = document.getElementById('subject').value;
+                const mensagem = document.getElementById('message').value;
+
+                // Parâmetros para o envio do template
+                const templateParams = {
+                    from_name: nome,
+                    from_email: email,
+                    subject: assunto,
+                    message: mensagem
+                };
+
+                // Envia o e-mail usando o serviço e template configurado no EmailJS
+                emailjs .send( " service_4gsw78b " , " template_plvdrmu " ) 
+                .then(function(response) {
+                        alert('Mensagem enviada com sucesso!');
+                    }, function(error) {
+                        alert('Erro ao enviar a mensagem. Tente novamente.');
+                    });
+            });
+        });
+
+        // Função de Logout
+        document.getElementById("logout").addEventListener("click", function() {
+            // Remover dados da sessão
+            localStorage.removeItem('userLoggedIn'); // Exemplo de remoção de dados de login
+            window.location.href = 'teste02.html'; // Redireciona para a página de login
+        });
+
+    </script>
+
+</body>
+
+</html>
